@@ -80,13 +80,13 @@ BEGIN
         
     END IF;
 
-    -- Confirmar la transacción
+    -- Confirmar la transacciï¿½n
     COMMIT;
 
     DBMS_OUTPUT.PUT_LINE('Datos insertados correctamente en todas las tablas.');
 EXCEPTION
     WHEN OTHERS THEN
-        -- Si ocurre un error, hacer un rollback de la transacción
+        -- Si ocurre un error, hacer un rollback de la transacciï¿½n
         ROLLBACK;
         DBMS_OUTPUT.PUT_LINE('Error al insertar datos en las tablas.');
 END SP_HOSPITAL_REGISTRAR;
@@ -114,10 +114,6 @@ BEGIN
          v_fecharegistro
     );
 END;
-
-SELECT H.* 
-from Hospital H;
-
 -- b. SP_HOSPITAL_ACTUALIZAR
 
 CREATE OR REPLACE PROCEDURE SP_HOSPITAL_ACTUALIZAR(
@@ -209,7 +205,7 @@ BEGIN
     DBMS_OUTPUT.PUT_LINE('Datos actualizados correctamente en todas las tablas.');
 EXCEPTION
     WHEN OTHERS THEN
-        -- Si ocurre un error, hacer un rollback de la transacción
+        -- Si ocurre un error, hacer un rollback de la transacciï¿½n
         ROLLBACK;
         DBMS_OUTPUT.PUT_LINE('Error al actualizar datos en las tablas.');
 END SP_HOSPITAL_ACTUALIZAR;
@@ -265,20 +261,20 @@ BEGIN
         resultadoHospital := SQL%ROWCOUNT;
     END IF;
 
-    -- Confirmar la transacción
+    -- Confirmar la transacciï¿½n
     COMMIT;
 
     DBMS_OUTPUT.PUT_LINE('Datos eliminados correctamente en todas las tablas.');
 EXCEPTION
     WHEN OTHERS THEN
-        -- Si ocurre un error, hacer un rollback de la transacción
+        -- Si ocurre un error, hacer un rollback de la transacciï¿½n
         ROLLBACK;
         DBMS_OUTPUT.PUT_LINE('Error al eliminar datos en las tablas.');
 
 END SP_HOSPITAL_ELIMINAR;
 ----------------------------c)listar hospitales
 CREATE OR REPLACE PROCEDURE SP_LISTAR_HOSPITALES IS
-    -- Declaración de cursores
+    -- Declaraciï¿½n de cursores
     CURSOR curGerente IS SELECT * FROM Gerente;
     CURSOR curCondicion IS SELECT * FROM Condicion;
     CURSOR curProvincia IS SELECT * FROM Provincia;
@@ -289,32 +285,32 @@ BEGIN
     BEGIN
         -- Listar datos de la tabla Gerente
         FOR gerente_row IN curGerente LOOP
-            DBMS_OUTPUT.PUT_LINE('Gerente - ID: ' || gerente_row.idGerente || ', Descripción: ' || gerente_row.descGerente || ', Fecha de Registro: ' || TO_CHAR(gerente_row.fechaRegistro, 'DD-MM-YYYY'));
+            DBMS_OUTPUT.PUT_LINE('Gerente - ID: ' || gerente_row.idGerente || ', Descripciï¿½n: ' || gerente_row.descGerente || ', Fecha de Registro: ' || TO_CHAR(gerente_row.fechaRegistro, 'DD-MM-YYYY'));
         END LOOP;
 
         -- Listar datos de la tabla Condicion
         FOR condicion_row IN curCondicion LOOP
-            DBMS_OUTPUT.PUT_LINE('Condición - ID: ' || condicion_row.idCondicion || ', Descripción: ' || condicion_row.descCondicion || ', Fecha de Registro: ' || TO_CHAR(condicion_row.fechaRegistro, 'DD-MM-YYYY'));
+            DBMS_OUTPUT.PUT_LINE('Condiciï¿½n - ID: ' || condicion_row.idCondicion || ', Descripciï¿½n: ' || condicion_row.descCondicion || ', Fecha de Registro: ' || TO_CHAR(condicion_row.fechaRegistro, 'DD-MM-YYYY'));
         END LOOP;
 
         -- Listar datos de la tabla Provincia
         FOR provincia_row IN curProvincia LOOP
-            DBMS_OUTPUT.PUT_LINE('Provincia - ID: ' || provincia_row.idProvincia || ', Descripción: ' || provincia_row.descProvincia || ', Fecha de Registro: ' || TO_CHAR(provincia_row.fechaRegistro, 'DD-MM-YYYY'));
+            DBMS_OUTPUT.PUT_LINE('Provincia - ID: ' || provincia_row.idProvincia || ', Descripciï¿½n: ' || provincia_row.descProvincia || ', Fecha de Registro: ' || TO_CHAR(provincia_row.fechaRegistro, 'DD-MM-YYYY'));
         END LOOP;
 
         -- Listar datos de la tabla Sede
         FOR sede_row IN curSede LOOP
-            DBMS_OUTPUT.PUT_LINE('Sede - ID: ' || sede_row.idSede || ', Descripción: ' || sede_row.descSede || ', Fecha de Registro: ' || TO_CHAR(sede_row.fechaRegistro, 'DD-MM-YYYY'));
+            DBMS_OUTPUT.PUT_LINE('Sede - ID: ' || sede_row.idSede || ', Descripciï¿½n: ' || sede_row.descSede || ', Fecha de Registro: ' || TO_CHAR(sede_row.fechaRegistro, 'DD-MM-YYYY'));
         END LOOP;
 
         -- Listar datos de la tabla Distrito
         FOR distrito_row IN curDistrito LOOP
-            DBMS_OUTPUT.PUT_LINE('Distrito - ID: ' || distrito_row.idDistrito || ', Descripción: ' || distrito_row.descDistrito || ', ID Provincia: ' || distrito_row.idProvincia || ', Fecha de Registro: ' || TO_CHAR(distrito_row.fechaRegistro, 'DD-MM-YYYY'));
+            DBMS_OUTPUT.PUT_LINE('Distrito - ID: ' || distrito_row.idDistrito || ', Descripciï¿½n: ' || distrito_row.descDistrito || ', ID Provincia: ' || distrito_row.idProvincia || ', Fecha de Registro: ' || TO_CHAR(distrito_row.fechaRegistro, 'DD-MM-YYYY'));
         END LOOP;
 
         -- Listar datos de la tabla Hospital
         FOR hospital_row IN curHospital LOOP
-            DBMS_OUTPUT.PUT_LINE('Hospital - ID: ' || hospital_row.idHospital || ', ID Distrito: ' || hospital_row.idDistrito || ', Nombre: ' || hospital_row.nombre || ', Antigüedad: ' || hospital_row.Antiguedad || ', Área: ' || hospital_row.Area || ', ID Sede: ' || hospital_row.idSede || ', ID Gerente: ' || hospital_row.idGerente || ', ID Condición: ' || hospital_row.idCondicion || ', Fecha de Registro: ' || TO_CHAR(hospital_row.FechaRegistro, 'DD-MM-YYYY'));
+            DBMS_OUTPUT.PUT_LINE('Hospital - ID: ' || hospital_row.idHospital || ', ID Distrito: ' || hospital_row.idDistrito || ', Nombre: ' || hospital_row.nombre || ', Antigï¿½edad: ' || hospital_row.Antiguedad || ', ï¿½rea: ' || hospital_row.Area || ', ID Sede: ' || hospital_row.idSede || ', ID Gerente: ' || hospital_row.idGerente || ', ID Condiciï¿½n: ' || hospital_row.idCondicion || ', Fecha de Registro: ' || TO_CHAR(hospital_row.FechaRegistro, 'DD-MM-YYYY'));
         END LOOP;
 
     EXCEPTION
@@ -323,5 +319,4 @@ BEGIN
     END;
 END SP_LISTAR_HOSPITALES;
 
-drop procedure sp_hospital_listar
  
