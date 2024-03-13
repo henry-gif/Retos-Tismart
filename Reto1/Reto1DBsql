@@ -15,7 +15,7 @@ CREATE TABLE Provincia (
     descProvincia VARCHAR2(20) NOT NULL,
     fechaRegistro DATE
 );
-
+    
 CREATE TABLE Sede (
     idSede INTEGER NOT NULL PRIMARY KEY,
     descSede VARCHAR2(20) NOT NULL,
