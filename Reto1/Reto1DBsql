@@ -1,0 +1,47 @@
+CREATE TABLE Gerente (
+    idGerente INTEGER NOT NULL PRIMARY KEY,
+    descGerente VARCHAR2(20) NOT NULL,
+    fechaRegistro DATE
+);
+
+CREATE TABLE Condicion (
+    idCondicion INTEGER NOT NULL PRIMARY KEY,
+    descCondicion VARCHAR2(20) NOT NULL,
+    fechaRegistro DATE
+);
+
+CREATE TABLE Provincia (
+    idProvincia INTEGER NOT NULL PRIMARY KEY,
+    descProvincia VARCHAR2(20) NOT NULL,
+    fechaRegistro DATE
+);
+
+CREATE TABLE Sede (
+    idSede INTEGER NOT NULL PRIMARY KEY,
+    descSede VARCHAR2(20) NOT NULL,
+    fechaRegistro DATE
+);
+
+CREATE TABLE Distrito (
+    idDistrito INTEGER NOT NULL PRIMARY KEY,
+    descDistrito VARCHAR2(20) NOT NULL,
+    idProvincia INTEGER NOT NULL,
+    fechaRegistro DATE,
+    CONSTRAINT fkProvincia FOREIGN KEY (idProvincia) REFERENCES Provincia(idProvincia)
+);
+
+CREATE TABLE Hospital (
+    idHospital INTEGER NOT NULL PRIMARY KEY,
+    idDistrito INTEGER NOT NULL,
+    nombre VARCHAR2(20) NOT NULL,
+    Antiguedad INTEGER NOT NULL,
+    Area NUMBER(5,2)NOT NULL,
+    idSede INTEGER NOT NULL,
+    idGerente INTEGER NOT NULL,
+    idCondicion INTEGER NOT NULL,
+    FechaRegistro DATE,
+    CONSTRAINT fkDistrito FOREIGN KEY (idDistrito) REFERENCES Distrito(idDistrito),
+    CONSTRAINT fkSede FOREIGN KEY (idSede) REFERENCES Sede(idSede),
+    CONSTRAINT fkGerente FOREIGN KEY (idGerente) REFERENCES Gerente(idGerente),
+    CONSTRAINT fkCondicion FOREIGN KEY (idCondicion) REFERENCES Condicion(idCondicion)
+);
