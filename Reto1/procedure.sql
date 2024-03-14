@@ -167,9 +167,9 @@ CREATE OR REPLACE PACKAGE BODY HospitalPackage AS
             DBMS_OUTPUT.PUT_LINE('Ocurrió un error: ' || SQLERRM);
     END SP_HOSPITAL_ELIMINAR;
 
-    PROCEDURE SP_HOSPITAL_LISTAR IS
+     PROCEDURE SP_HOSPITAL_LISTAR IS
         CURSOR hospital_cursor IS
-            SELECT H.* FROM Hospital H ORDER BY H.Antiguedad DESC;
+            SELECT H.* FROM Hospital H ORDER BY H.Antiguedad ASC;
         hospital_record Hospital%ROWTYPE;
     BEGIN
         OPEN hospital_cursor;
@@ -185,3 +185,42 @@ CREATE OR REPLACE PACKAGE BODY HospitalPackage AS
     END SP_HOSPITAL_LISTAR;
 
 END HospitalPackage;
+
+select h.*from hospital h;
+
+---registrar hospital
+DECLARE
+    v_nombre_hospital VARCHAR2(50) := 'HOSPITAL1';
+    v_antiguedad INTEGER := 15;
+    v_area DECIMAL(5,2) := 10.15;
+    v_idDistrito INTEGER := 1;
+    v_idSede INTEGER := 2;
+    v_idGerente INTEGER := 1;
+    v_idCondicion INTEGER := 2;
+BEGIN
+    SP_HOSPITAL_REGISTRAR(v_nombre_hospital, v_antiguedad, v_area, v_idDistrito, v_idSede, v_idGerente, v_idCondicion);
+END;
+----actualizar
+DECLARE
+    idHospital INTEGER := 1;
+    nombre_hospital VARCHAR2(100) := 'Nuevo Nombre del Hospital';
+    antiguedad INTEGER := 15;
+    area DECIMAL(10,2) := 250.75;
+    idDistrito INTEGER := 2;
+    idSede INTEGER := 2;
+    idGerente INTEGER := 2;
+    idCondicion INTEGER := 2;
+BEGIN
+    SP_HOSPITAL_ACTUALIZAR(idHospital, nombre_hospital, antiguedad, area, idDistrito, idSede, idGerente, idCondicion);
+END;
+-------------------eliminar
+DECLARE
+    idHospitalEliminar INTEGER := 29;
+BEGIN
+    SP_HOSPITAL_ELIMINAR(idHospitalEliminar);
+END;
+--------------listar
+BEGIN
+    -- Llamada al procedimiento SP_HOSPITAL_LISTAR
+    SP_HOSPITAL_LISTAR;
+END;
