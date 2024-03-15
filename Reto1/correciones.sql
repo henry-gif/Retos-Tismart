@@ -1,5 +1,5 @@
+SET SERVEROUTPUT ON
 
-set SERVEROUTPUT on
 
 CREATE  SEQUENCE hospital_seq START WITH 1 INCREMENT BY 1;
 
@@ -175,22 +175,22 @@ select h.*from hospital h;
 
 ---registrar hospital
 DECLARE
-    v_nombre_hospital VARCHAR2(50) := 'HOSPITAL1';
-    v_antiguedad INTEGER := 15;
-    v_area DECIMAL(5,2) := 10.15;
-    v_idDistrito INTEGER := 1;
-    v_idSede INTEGER := 2;
-    v_idGerente INTEGER := 1;
-    v_idCondicion INTEGER := 2;
+    v_nombre_hospital VARCHAR2(255) := 'HOSPITAL DE TRUJILLO';
+    v_antiguedad NUMBER := 35;
+    v_area NUMBER(10,2) := 20.15;
+    v_idDistrito NUMBER := 1;
+    v_idSede NUMBER := 2;
+    v_idGerente NUMBER := 1;
+    v_idCondicion NUMBER:= 1;
 BEGIN
     SP_HOSPITAL_REGISTRAR(v_nombre_hospital, v_antiguedad, v_area, v_idDistrito, v_idSede, v_idGerente, v_idCondicion);
 END;
 ----actualizar
 DECLARE
-    v_idHospital INTEGER := 1;
-    v_nuevoNombre VARCHAR2(100) := 'Hospitalprueba';
-    v_nuevaAntiguedad INTEGER := 15;
-    v_nuevaArea DECIMAL(10, 2) := 250.75;
+    v_idHospital NUMBER := 1;
+    v_nuevoNombre VARCHAR2(255) := 'HospitalUNI';
+    v_nuevaAntiguedad NUMBER := 15;
+    v_nuevaArea NUMBER(10, 2) := 250.75;
 BEGIN
     SP_HOSPITAL_ACTUALIZAR(
         v_idHospital,
@@ -201,7 +201,7 @@ BEGIN
 END;
 -------------------eliminar
 DECLARE
-    idHospitalEliminar INTEGER := 29;
+    idHospitalEliminar NUMBER :=1;
 BEGIN
     SP_HOSPITAL_ELIMINAR(idHospitalEliminar);
 END;
