@@ -1,0 +1,11 @@
+
+example-card {
+  max-width: 400px;
+}
+mat-card{
+  align-items: center;
+  border-radius: 10px black solid;
+  padding-top: 5px;
+  padding-left: 20%;
+  align-content: center;
+}

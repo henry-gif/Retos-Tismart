@@ -8,6 +8,7 @@ export class Hospital {
   idGerente: number;
   idCondicion: number;
   fexhaCreacion:Date;
+  id: any;
   constructor(
   
   ) {

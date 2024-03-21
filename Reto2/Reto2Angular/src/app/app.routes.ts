@@ -12,10 +12,10 @@ import { ModificarHospitalComponent } from './component/Hospital/modificar-hospi
 export const routes: Routes = [
     {path:'Login' ,component:LoginComponent },
     {path:'Menu',component:MenuHospitalComponent},
-    { path: 'Buscar/:id', component: BuscarHospitalComponent },
+    { path: 'Buscar', component: BuscarHospitalComponent },
     {path:'Eliminar',component:EliminarHospitalComponent},
     {path:'Modificar',component:ModificarHospitalComponent},
     {path:'Registrar',component:RegistrarHospitalComponent},
-    {path: '',redirectTo:'/Eliminar',pathMatch:'full'}
+    {path: '',redirectTo:'/Buscar',pathMatch:'full'}
     
 ];

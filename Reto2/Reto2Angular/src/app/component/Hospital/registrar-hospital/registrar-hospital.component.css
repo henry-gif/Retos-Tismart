@@ -1,3 +1,23 @@
 .example-spacer {
     flex: 1 1 auto;
   }
+  
+  
+  .content {
+    height: calc(100% - 64px); /* Adjust based on your toolbar height */
+    /* Background color for remaining space */
+    background-color: #ffffff;
+
+    height: 90%;
+    width:auto; /* Ocupa el 100% del contenedor */
+    overflow: auto; /* Añade desplazamiento si el contenido es más grande que el contenedor */
+    position: relative;
+  }
+  mat-card{
+    align-items: center;
+    border-radius: 10px black solid;
+    padding-top: 5px;
+    padding-left: 20%;
+    align-content: center;
+  }
+

@@ -7,10 +7,12 @@ import {MatListModule} from '@angular/material/list';
 import { HospitalServicesService } from '../../../services/hospital-services.service';
 import { Hospital } from '../../../models/hospital';
 import { MatTableDataSource } from '@angular/material/table';
+import {MatCardModule} from '@angular/material/card';
 @Component({
   selector: 'app-eliminar-hospital',
   standalone: true,
-  imports: [MatToolbarModule,MatButtonModule,MatIconModule,MatSidenavModule,MatListModule],
+  imports: [MatToolbarModule,MatButtonModule,MatIconModule,MatSidenavModule,MatListModule,MatCardModule],
+  providers: [HospitalServicesService],
   templateUrl: './eliminar-hospital.component.html',
   styleUrl: './eliminar-hospital.component.css'
 })

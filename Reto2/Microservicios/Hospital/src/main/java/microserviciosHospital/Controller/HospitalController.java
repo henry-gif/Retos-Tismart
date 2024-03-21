@@ -9,8 +9,10 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import reactor.util.annotation.NonNull;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+@CrossOrigin("http://localhost:4200")
 @RestController
 public class HospitalController {
     @Autowired
@@ -18,7 +20,7 @@ public class HospitalController {
 
     // Endpoint para registrar un nuevo hospital
     @PostMapping("/registrar")
-    public ResponseEntity<?> registrarHospital(@Validated @RequestBody Hospital hospital) {
+    public ResponseEntity<?> registrarHospital(@RequestBody Hospital hospital) {
 
             Hospital nuevoHospital = hospitalService.registrarHospital(hospital);
             return ResponseEntity.status(HttpStatus.CREATED).body(nuevoHospital);
@@ -27,7 +29,7 @@ public class HospitalController {
 
     // Endpoint para modificar un hospital existente
     @PutMapping("/modificar/{id}")
-    public ResponseEntity<?> modificarHospital( @Validated@RequestBody Hospital hospital,@PathVariable Long idHospital) {
+    public ResponseEntity<?> modificarHospital( @RequestBody Hospital hospital,@PathVariable Long idHospital) {
      Optional<Hospital> O=hospitalService.buscarPorId(idHospital);
      if (O.isEmpty()){
          return ResponseEntity.notFound().build();
@@ -39,7 +41,7 @@ public class HospitalController {
      hospitaldb.setDate(hospital.getDate());
      hospitaldb.setIdDistrito(hospital.getIdDistrito());
      hospitaldb.setIdSede(hospital.getIdSede());
-     hospital.setIdGerente(hospital.getIdGerente());
+     hospitaldb.setIdGerente(hospital.getIdGerente());
      hospitaldb.setIdCondicion(hospital.getIdCondicion());
      return ResponseEntity.status(HttpStatus.CREATED).body(hospitalService.registrarHospital(hospitaldb));
     }
@@ -62,12 +64,12 @@ public class HospitalController {
     }
 
     // Endpoint para buscar hospitales por su nombre
-    @GetMapping("buscar/{sede}")
-    public List<?> buscarHospitalesSede(@RequestParam @NonNull @PathVariable Long idSede) {
+    @GetMapping("buscar/{id}")
+    public List<?> buscarHospitalesSede( @PathVariable Long idSede) {
         List<Hospital> hospitales = hospitalService.buscarPorSede(idSede);
         if (hospitales.isEmpty()) {
-            return ResponseEntity.notFound().build();
+            return Collections.singletonList(ResponseEntity.notFound().build());
         }
-        return ResponseEntity.ok(hospitales);
+        return (List<?>) ResponseEntity.ok(hospitales);
     }
 }

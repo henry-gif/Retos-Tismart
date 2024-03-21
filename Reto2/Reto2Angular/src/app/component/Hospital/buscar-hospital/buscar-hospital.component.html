@@ -1,12 +1,14 @@
+
 <mat-sidenav-container fullscreen>
   <mat-sidenav #sidenav mode="over" color="primary">
     <mat-nav-list>
-      <a mat-list-item routerLink="/Registrar" (click)="sidenav.close()">Registrar Hospital</a>
-      <a mat-list-item routerLink="/Modificar" (click)="sidenav.close()">Modificar Hospital</a>
-      <a mat-list-item routerLink="/Eliminar" (click)="sidenav.close()">Eliminar Hospital</a>
-      <a mat-list-item routerLink="/Buscar" (click)="sidenav.close()">Buscar por id</a>
-      <a mat-list-item routerLink="/Login" (click)="sidenav.close()">CerrarSesion</a>
+      <a mat-list-item routerLink="/Registrar" routerLinkActive="active" (click)="sidenav.close()">Registrar Hospital</a>
+      <a mat-list-item routerLink="/Modificar" routerLinkActive="active" (click)="sidenav.close()">Modificar Hospital</a>
+      <a mat-list-item routerLink="/Eliminar" routerLinkActive="active" (click)="sidenav.close()">Eliminar Hospital</a>
+      <a mat-list-item routerLink="/Buscar" routerLinkActive="active" (click)="sidenav.close()">Buscar por id</a>
+      <a mat-list-item routerLink="/Login" routerLinkActive="active" (click)="sidenav.close()">Cerrar Sesión</a>
     </mat-nav-list>
+    
   </mat-sidenav>
 
   <mat-toolbar color="primary">
@@ -15,7 +17,96 @@
     </button>
     <span>Menú Principal</span>
   </mat-toolbar>
+  <mat-card class="example-card">
+    <mat-card-header>
   
+      <mat-card-title>Buscar hospital</mat-card-title>
+    
+    </mat-card-header>
+    <mat-card-content>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="nombre">Por id:</label>
+        </div>
+        <div class="form-group col-md-6">
+          <input type="text" class="form-control" id="nombre" placeholder="Ingrese su nombre" required />
+        </div>
+     
+      </div>
+      <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="nombre">Por sede:</label>
+      </div>
+      <div class="form-group col-md-6">
+        <select class="form-select" aria-label="Default select example">
+          <option selected>Selecione una sede</option>
+          <option value="1">1</option>
+          <option value="6">2</option>
+          <option value="3">3</option>
+        </select>
+      </div>
+      </div>
+      <div class="form-group col-md-6">
+        <button class="btn btn-primary me-md-2" type="button">Buscarr</button>   
+      </div>
+  
+    </mat-card-content>
+  </mat-card>
+  <table mat-table [dataSource]="dataSource">
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let hospital">{{hospital.id}}</td>
+    </ng-container>
+  
+  
+    <ng-container matColumnDef="nombre">
+      <th mat-header-cell *matHeaderCellDef>Nombre</th>
+      <td mat-cell *matCellDef="let hospital">{{hospital.nombre}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Antiguedad">
+      <th mat-header-cell *matHeaderCellDef>Antiguedad</th>
+      <td mat-cell *matCellDef="let hospital">{{hospital.Antiguedad}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Area">
+      <th mat-header-cell *matHeaderCellDef>Area</th>
+      <td mat-cell *matCellDef="let hospital">{{hospital.Area}}</td>
+    </ng-container>
+    <ng-container matColumnDef="idDistrito">
+      <th mat-header-cell *matHeaderCellDef>idDistrito</th>
+      <td mat-cell *matCellDef="let hospital">{{hospital.idDistrito}}</td>
+    </ng-container>
+    <ng-container matColumnDef="idSede">
+      <th mat-header-cell *matHeaderCellDef>idSede</th>
+      <td mat-cell *matCellDef="let hospital">{{hospital.idSede}}</td>
+    </ng-container>
+    <ng-container matColumnDef="Fecha de creacion">
+      <th mat-header-cell *matHeaderCellDef>Fecha de creacion</th>
+      <td mat-cell *matCellDef="let hospital">{{hospital.Fecha}}</td>
+    </ng-container>
+    <!-- Columna de Acciones -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Acciones</th>
+      <td mat-cell *matCellDef="let hospital">
+        <button mat-icon-button color="warn" (click)="deleteHospital(hospital.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="['id', 'nombre', 'Antiguedad','Area','idDistrito','idSede','Fecha de creacion','actions']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['id', 'nombre', 'Antiguedad','Area','idDistrito','idSede','Fecha de creacion','actions']"></tr>
+  </table>
+  
+  <h2 mat-dialog-title>Confirmación</h2>
+<mat-dialog-content>
+  <p>{{ data.message }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial>Sí</button>
+  <button mat-button [mat-dialog-close]="false">No</button>
+</mat-dialog-actions>
 
   
 </mat-sidenav-container>

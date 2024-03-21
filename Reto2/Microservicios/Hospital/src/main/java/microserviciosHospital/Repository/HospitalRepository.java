@@ -15,6 +15,7 @@ public interface HospitalRepository extends JpaRepository<Hospital,Long> {
 
 //    @Query("SELECT * FROM Hospital h WHERE h.sede = :idSede")
 //    List<Hospital> buscarPorIdSede(Long idSede);
-    @Query(value = "CALL ListarHospitalesPorSede(:idSede)", nativeQuery = true)
+
+    @Query(value = "SELECT h.* FROM Hospital h INNER JOIN Sede s ON h.sede_id = s.id WHERE s.id = :idSede", nativeQuery = true)
     List<Hospital> buscarPorIdSede(Long idSede);
 }

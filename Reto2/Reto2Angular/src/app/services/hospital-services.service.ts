@@ -7,6 +7,15 @@ import { Hospital } from '../models/hospital';
   providedIn: 'root'
 })
 export class HospitalServicesService {
+  deleteHospital(id: number) {
+    throw new Error('Method not implemented.');
+  }
+  getHospitals() {
+    throw new Error('Method not implemented.');
+  }
+  ObtenerPorId(hospitalId: Number) {
+    throw new Error('Method not implemented.');
+  }
   private apiUrl = 'https://ejemplo.com/api'; // URL de tu API
   private cabeceras:HttpHeaders=new HttpHeaders({'Content-Type':'aplication/json'});
 

@@ -1,13 +1,13 @@
 <mat-sidenav-container fullscreen>
   <mat-sidenav #sidenav mode="over" color="primary">
     <mat-nav-list>
-      <a mat-list-item routerLink="/Registrar" (click)="sidenav.close()">Registrar Hospital</a>
-      <a mat-list-item routerLink="/Modificar" (click)="sidenav.close()">Modificar Hospital</a>
-      <a mat-list-item routerLink="/Eliminar" (click)="sidenav.close()">Eliminar Hospital</a>
-      <a mat-list-item routerLink="/Buscar" (click)="sidenav.close()">Buscar por id</a>
-      <a mat-list-item routerLink="/Login" (click)="sidenav.close()">CerrarSesion</a>
+      <a mat-list-item routerLink="/Registrar" routerLinkActive="active" (click)="sidenav.close()">Registrar Hospital</a>
+      <a mat-list-item routerLink="/Modificar" routerLinkActive="active" (click)="sidenav.close()">Modificar Hospital</a>
+      <a mat-list-item routerLink="/Eliminar" routerLinkActive="active" (click)="sidenav.close()">Eliminar Hospital</a>
+      <a mat-list-item routerLink="/Buscar" routerLinkActive="active" (click)="sidenav.close()">Buscar por id</a>
+      <a mat-list-item routerLink="/Login" routerLinkActive="active" (click)="sidenav.close()">Cerrar Sesión</a>
     </mat-nav-list>
-  </mat-sidenav>
+    
 
   <mat-toolbar color="primary">
     <button mat-icon-button (click)="sidenav.toggle()">
@@ -15,8 +15,45 @@
     </button>
     <span>Menú Principal</span>
   </mat-toolbar>
-  
 
-  
+  <div class="content">
+    <form class="form-container">
+      <br />
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>Registrar hospital</mat-card-title>
+        </mat-card-header>
+        <br>
+        <mat-card-content>
+          <form>
+            <div class="form-group col-md-5">
+              <label for="fechaRegistro">Fecha de registro:</label>
+            </div>
+            <div class="form-group col-md-5">
+              <div class="input-group date">
+                <input type="text" class="form-control" id="fechaRegistro" [(ngModel)]="fechaRegistro" />
+                <div class="input-group-addon">
+                  <span class="glyphicon glyphicon-th"></span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="form-row justify-content-center text-center">
+              <div class="form-group col-md-5">
+                <div class="d-grid gap-2 col-6 mx-auto">
+                  <button class="btn btn-primary" type="button">Registrar</button>
+                </div>
+              </div>
+              <div class="form-group col-md-5">
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  
+                  <button class="btn btn-primary me-md-2" type="button" (click)="limpiarCampos()">Limpiar</button>
+                </div>
+              </div>
+            </div>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </form>
+  </div>
 </mat-sidenav-container>
-
