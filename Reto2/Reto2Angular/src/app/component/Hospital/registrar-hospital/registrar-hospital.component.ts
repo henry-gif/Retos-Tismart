@@ -10,17 +10,19 @@ import {provideNativeDateAdapter} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { Hospital } from '../../../models/hospital';
+import { FormsModule } from '@angular/forms';
 import { HospitalServicesService } from '../../../services/hospital-services.service';
 @Component({
   selector: 'app-registrar-hospital',
   standalone: true,
   providers: [provideNativeDateAdapter(),HospitalServicesService],
-  imports: [MatToolbarModule,MatButtonModule,MatIconModule,MatSidenavModule,MatListModule,MatCardModule,MatCardModule,MatFormFieldModule,MatDatepickerModule,MatGridListModule],
+  imports: [MatToolbarModule,MatButtonModule,MatIconModule,MatSidenavModule,MatListModule,MatCardModule,MatCardModule,MatFormFieldModule,MatDatepickerModule,MatGridListModule,FormsModule],
   templateUrl: './registrar-hospital.component.html',
   styleUrl: './registrar-hospital.component.css'
 })
 export class RegistrarHospitalComponent implements OnInit {
-  
+
+
   // Variables para almacenar los valores de los campos del formulario
   idHospital: string = '';
   nombre: string = '';
@@ -32,7 +34,7 @@ export class RegistrarHospitalComponent implements OnInit {
   idCondicion: string = '';
   fechaRegistro: string = '';
 
-  constructor() { }
+  constructor(private service:HospitalServicesService) { }
 
   ngOnInit() {
   }
@@ -49,6 +51,9 @@ export class RegistrarHospitalComponent implements OnInit {
     this.idCondicion = '';
     this.fechaRegistro = '';
   }
+
   
 
 }
+ 
+
