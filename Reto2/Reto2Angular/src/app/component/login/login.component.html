@@ -1,0 +1,38 @@
+<div class="body">
+    <div class="col-xs-6 col-md-4">
+        <h1 class="permanent-marker-regular"> Login principal</h1>
+           <mat-card>
+        <mat-card-content>
+            <form>
+                <mat-label >Usuario:</mat-label>
+                <br>
+                <mat-form-field appearance="fill">
+               
+                    <input matInput placeholder="Ingrese ">
+                </mat-form-field>
+                <br>
+                <mat-label>Contraseña:</mat-label>
+                <br>
+                <mat-form-field appearance="fill">
+                    
+                    <input [type]="hide ? 'password' : 'text'" matInput placeholder="Ingrese contraseña">
+                   
+        
+                    
+                </mat-form-field>
+                <br>
+                <section>
+                    <button type="submit" class="btnLogin" mat-raised-button color="primary" [disabled]="formUsuario.invalid">
+                        Iniciar sesion
+                    </button>
+                   
+                </section>
+                
+            </form>
+        </mat-card-content>
+    </mat-card>
+    </div>
+ 
+
+
+</div>

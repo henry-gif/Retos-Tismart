@@ -1,0 +1,8 @@
+.mat-sidenav-container {
+    height: 100vh; /* Altura del viewport */
+    background-image: url('img/background.jpg'); /* Ruta de tu imagen de fondo */
+    background-size: cover; /* Para cubrir todo el contenedor */
+    background-position: center; /* Para centrar la imagen */
+    display: flex; /* Para que el contenedor de la barra de herramientas y el menú lateral ocupen todo el espacio */
+  }
+  

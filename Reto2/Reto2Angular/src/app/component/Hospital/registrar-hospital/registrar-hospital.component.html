@@ -1,0 +1,22 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="over" color="primary">
+    <mat-nav-list>
+      <a mat-list-item routerLink="/Registrar" (click)="sidenav.close()">Registrar Hospital</a>
+      <a mat-list-item routerLink="/Modificar" (click)="sidenav.close()">Modificar Hospital</a>
+      <a mat-list-item routerLink="/Eliminar" (click)="sidenav.close()">Eliminar Hospital</a>
+      <a mat-list-item routerLink="/Buscar" (click)="sidenav.close()">Buscar por id</a>
+      <a mat-list-item routerLink="/Login" (click)="sidenav.close()">CerrarSesion</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Menú Principal</span>
+  </mat-toolbar>
+  
+
+  
+</mat-sidenav-container>
+
