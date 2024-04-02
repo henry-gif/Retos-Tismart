@@ -9,6 +9,7 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatIconModule} from '@angular/material/icon';
 import {MatCardModule} from '@angular/material/card';
 import {MatInputModule} from '@angular/material/input';
+
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -33,7 +34,7 @@ export class LoginComponent {
 
     if (usuario === 'admin' && password === 'admin') {
  
-            this.router.navigate(['Registrar']); // Redirige a 'Registrar'
+            this.router.navigate(['Registrar']); 
     
     } else {
         this.snackbar.open("Usuario o Contraseña son invalidos", '', {

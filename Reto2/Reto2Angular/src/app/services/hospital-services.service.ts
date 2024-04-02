@@ -16,7 +16,7 @@ export class HospitalServicesService {
   ObtenerPorId(hospitalId: Number) {
     throw new Error('Method not implemented.');
   }
-  private apiUrl = 'https://ejemplo.com/api'; // URL de tu API
+  private apiUrl = 'http://localhost:9091/Hospital'; 
   private cabeceras:HttpHeaders=new HttpHeaders({'Content-Type':'aplication/json'});
 
   constructor(private http: HttpClient) { }

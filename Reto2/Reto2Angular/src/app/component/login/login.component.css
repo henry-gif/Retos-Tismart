@@ -18,3 +18,8 @@ mat-card{
   font-style: normal;
   text-align: center;
 }
+section button{
+  align-items: center;
+  justify-content: center;
+  margin: 0 ;   
+}

@@ -16,6 +16,6 @@ export const routes: Routes = [
     {path:'Eliminar',component:EliminarHospitalComponent},
     {path:'Modificar',component:ModificarHospitalComponent},
     {path:'Registrar',component:RegistrarHospitalComponent},
-    {path: '',redirectTo:'/Buscar',pathMatch:'full'}
-    
+    {path: '',redirectTo:'/Login',pathMatch:'full'},
+    {path: '**',redirectTo:'/Login',pathMatch:'full'}
 ];

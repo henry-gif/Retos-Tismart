@@ -4,13 +4,20 @@ import com.fasterxml.jackson.annotation.JsonAnySetter;
 import jakarta.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.lang.NonNull;
 
 import java.util.Date;
 
 @Entity
 @Table(name="Hospital")
-
+@Setter
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Hospital {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,102 +33,24 @@ public class Hospital {
     @NotEmpty
     @Column(name = "Area")
     private Float area;
-    @NotEmpty
-    @Column(name = "idDistrito")
-    private Integer idDistrito;
-    @NotEmpty
-    @Column(name = "idProvincia")
-    private Integer idProvincia;
+    @ManyToOne
+    @JoinColumn(name = "idDistrito")
+    private Distrito distrito;
 
-    @Column(name = "idSede")
-    private Integer idSede;
+    @ManyToOne
+    @JoinColumn(name = "idSede")
+    private Sede sede;
 
-    @Column(name = "idGerente")
-    private Integer idGerente;
+    @ManyToOne
+    @JoinColumn(name = "idGerente")
+    private Gerente gerente;
 
-    @Column(name = "idCondiciom")
-    private Integer idCondicion;
+    @ManyToOne
+    @JoinColumn(name = "idCondicion")
+    private Condicion condicion;
     @Column(name = "Fecha creacion")
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
-    public Long getIdHospital() {
-        return idHospital;
-    }
 
-    public void setIdHospital(Long idHospital) {
-        this.idHospital = idHospital;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Integer getAntiguedad() {
-        return antiguedad;
-    }
-
-    public void setAntiguedad(Integer antiguedad) {
-        this.antiguedad = antiguedad;
-    }
-
-    public Float getArea() {
-        return area;
-    }
-
-    public void setArea(Float area) {
-        this.area = area;
-    }
-
-    public Integer getIdDistrito() {
-        return idDistrito;
-    }
-
-    public void setIdDistrito(Integer idDistrito) {
-        this.idDistrito = idDistrito;
-    }
-
-    public Integer getIdProvincia() {
-        return idProvincia;
-    }
-
-    public void setIdProvincia(Integer idProvincia) {
-        this.idProvincia = idProvincia;
-    }
-
-    public Integer getIdSede() {
-        return idSede;
-    }
-
-    public void setIdSede(Integer idSede) {
-        this.idSede = idSede;
-    }
-
-    public Integer getIdGerente() {
-        return idGerente;
-    }
-
-    public void setIdGerente(Integer idGerente) {
-        this.idGerente = idGerente;
-    }
-
-    public Integer getIdCondicion() {
-        return idCondicion;
-    }
-
-    public void setIdCondicion(Integer idCondicion) {
-        this.idCondicion = idCondicion;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
 }

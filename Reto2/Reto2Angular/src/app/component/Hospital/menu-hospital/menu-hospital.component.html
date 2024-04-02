@@ -2,11 +2,12 @@
 <mat-sidenav-container fullscreen>
   <mat-sidenav #sidenav mode="over" color="primary">
     <mat-nav-list>
-      <a mat-list-item routerLink="/Registrar" routerLinkActive="active" (click)="sidenav.close()">Registrar Hospital</a>
-      <a mat-list-item routerLink="/Modificar" routerLinkActive="active" (click)="sidenav.close()">Modificar Hospital</a>
-      <a mat-list-item routerLink="/Eliminar" routerLinkActive="active" (click)="sidenav.close()">Eliminar Hospital</a>
-      <a mat-list-item routerLink="/Buscar" routerLinkActive="active" (click)="sidenav.close()">Buscar por id</a>
-      <a mat-list-item routerLink="/Login" routerLinkActive="active" (click)="sidenav.close()">Cerrar Sesión</a>
+      <a mat-list-item [routerLink]="['/Registrar']"  routerLinkActive="activebutton"  ariaCurrentWhenActive="page" (click)="sidenav.close()">Registrar Hospital</a>
+     
+      <a mat-list-item [routerLink]="['/Modificar']" routerLinkActive="active" (click)="sidenav.close()">Modificar Hospital</a>
+      <a mat-list-item [routerLink]="['/Eliminar']"  routerLinkActive="active" (click)="sidenav.close()">Eliminar Hospital</a>
+      <a mat-list-item [routerLink]="['/Buscar']"  routerLinkActive="active" (click)="sidenav.close()">Buscar por id</a>
+      <a mat-list-item  [routerLink]="['/']"  routerLinkActive="active" (click)="sidenav.close()">Cerrar Sesión</a>
     </mat-nav-list>
     
   </mat-sidenav>
